@@ -1,0 +1,5 @@
+version: "3.8"
+
+services:
+  python-lib:
+    iamge: sanoguzhan/python-lib:3.8
