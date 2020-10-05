@@ -2,4 +2,12 @@ version: "3.8"
 
 services:
   python-lib:
-    iamge: sanoguzhan/python-lib:3.8
+    image: sanoguzhan/python-lib:3.8
+    build:
+      context: .
+      target: python
+      dockerfile: python/Dockerfile.python
+    volumes:
+      - ..:/code
+
+    user: ${UID}:${GID}
