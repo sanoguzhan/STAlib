@@ -3,7 +3,7 @@
 
 #include<iostream>
 #include<vector>
-#include <omp.h>
+
 namespace sta{
 
 template<typename T>

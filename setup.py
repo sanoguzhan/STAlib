@@ -39,14 +39,14 @@ ext_libraries = [['sort', {
                'sources': [os.path.join(dir_sort, 'sort.cpp'),],
                'include_dirs': [dir_sort],
                'macros': macros,
-                'cflags' : ["-std=c++11", "-fopenmp"]
+                'cflags' : ["-std=c++11", ]
                }
 ],
 ['search', {
                'sources': [os.path.join(dir_search, "search.cpp")],
                'include_dirs': [dir_search],
                'macros': macros,
-                'cflags' : ["-std=c++11", "-fopenmp"]
+                'cflags' : ["-std=c++11",]
                }
 ]]
 
@@ -59,8 +59,6 @@ def get_long_description():
         next(infile)
         for line in infile:
             line = line.rstrip().replace('.. automodule:: stalib', '')
-            if line == '5.0.0':
-                break
             version_lines.append(line)
     version_history = '\n'.join(version_lines)
     version_history = sub(r':func:`([a-zA-Z0-9._]+)`', r'\1', version_history)
@@ -75,8 +73,7 @@ ext_modules=[
    ],
     include_dirs=[dir_sort, dir_search],
     language="c++",
-    extra_compile_args=['-fopenmp'],
-    extra_link_args=['-fopenmp']),
+   )
 ]
 
 
