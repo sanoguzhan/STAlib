@@ -22,16 +22,10 @@ with open(_path) as f:
 
 
 
-_path = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(_path, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
-
-
 cmdclass = {}
 ext_lib_path = 'stalib/core/algorithms'
 
 dir_sort = os.path.join(ext_lib_path, "sort")
-
 
 dir_search = os.path.join(ext_lib_path, "search")
 
@@ -56,49 +50,6 @@ ext_libraries = [['sort', {
                }
 ]]
 
-class build_clib_with_cflags(build_clib):
-    def build_libraries(self, libraries):
-            for (lib_name, build_info) in libraries:
-                sources = build_info.get('sources')
-                if sources is None or not isinstance(sources, (list, tuple)):
-                    raise DistutilsSetupError(
-                           "in 'libraries' option (library '%s'), "
-                           "'sources' must be present and must be "
-                           "a list of source filenames" % lib_name)
-                sources = list(sources)
-
-                log.info("building '%s' library", lib_name)
-
-
-                macros = build_info.get('macros')
-                include_dirs = build_info.get('include_dirs')
-                cflags = build_info.get('cflags')         
-                objects = self.compiler.compile(sources, 
-                                                output_dir=self.build_temp,
-                                                macros=macros,
-                                                include_dirs=include_dirs,
-                                                extra_postargs=cflags,        
-                                                debug=self.debug)
-
-
-                self.compiler.create_static_lib(objects, lib_name,
-                                                output_dir=self.build_clib,
-                                                debug=self.debug)
-
-
-ext_modules=[
-
-   Extension(name="engine", sources=["stalib/core/engine.pyx", 
-   "stalib/core/algorithms/sort/sort.cpp", 
-   "stalib/core/algorithms/search/search.cpp", 
-   ],
-    include_dirs=[dir_sort, dir_search],
-    language="c++",
-    extra_compile_args=['-fopenmp'],
-    extra_link_args=['-fopenmp']),
-]
-
-
 def get_long_description():
     # Fix display issues on PyPI caused by RST markup
     readme = open('README.rst').read()
@@ -114,8 +65,20 @@ def get_long_description():
     version_history = '\n'.join(version_lines)
     version_history = sub(r':func:`([a-zA-Z0-9._]+)`', r'\1', version_history)
 
-    ret = readme + '\n\n' + version_history
-    return ret
+    return readme + '\n\n' + version_history
+
+ext_modules=[
+
+   Extension(name="engine", sources=["stalib/core/engine.pyx", 
+   "stalib/core/algorithms/sort/sort.cpp", 
+   "stalib/core/algorithms/search/search.cpp", 
+   ],
+    include_dirs=[dir_sort, dir_search],
+    language="c++",
+    extra_compile_args=['-fopenmp'],
+    extra_link_args=['-fopenmp']),
+]
+
 
 setup(
   name = "stalib",
