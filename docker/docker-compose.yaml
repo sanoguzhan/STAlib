@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   python-lib:
-    image: sanoguzhan/python-lib:3.8
+    image: sanoguzhan/python-lib:3.6
     build:
       context: .
       target: python
@@ -10,4 +10,4 @@ services:
     volumes:
       - ..:/code
 
-    user: ${UID}:${GID}
+   # user: ${UID}:${GID}

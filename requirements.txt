@@ -1,9 +1,7 @@
 cython
-numpy
 matplotlib
 Sphinx
 wheel
 tox
 flake8
 pytest
-
