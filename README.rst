@@ -7,8 +7,8 @@ Standard Template and algorithms library of C++ for Python with C-Python API
 .. image:: https://readthedocs.org/projects/more-itertools/badge/?version=latest
   :target: https://more-itertools.readthedocs.io/en/stable/
 
-This Librariy is complementary algotrithms and templates to Python's ``built-in``.
- The algorithms implemented in C++ and extended to Python and compitable with Python's ``list`` objects.
+Stalib Library includes complementary algotrithms and templates to Python's ``built-in``.
+The algorithms implemented in C++ and extended to Python and compitable with Python's ``list`` objects.
 
 ############
 Algorithms:
@@ -16,7 +16,7 @@ Algorithms:
 Sort and Search Algorithms:
 
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Sort Algorithms        | `Bubble Sort`_,                                                                                                                                                                                                      |
+| **Sort Algorithms**    | Bubble Sort`_,                                                                                                                                                                                                      |
 |                        | `Merge Sort`_,                                                                                                                                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -25,7 +25,7 @@ Templates:
 ############
 
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Sequence               | `Vector <https://github.com/sanoguzhan/STAlib>`_,                                                                                                                                                                                                      |
+| **Sequence**           | `Vector <https://github.com/sanoguzhan/STAlib/blob/main/stalib/core/algorithms/sort/sort.hpp>`_,                                                                                                                                                                                                      |
 |                        |                                                                                                                                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
