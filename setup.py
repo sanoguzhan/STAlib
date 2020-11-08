@@ -87,6 +87,7 @@ setup(
   ext_modules = cythonize(ext_modules, 
   language_level=3,
   ),
+  url="https://github.com/sanoguzhan/STAlib",
   long_description=get_long_description(),
   author='Oguzhan San',
   author_email='sanoguzhan@hotmail.com',

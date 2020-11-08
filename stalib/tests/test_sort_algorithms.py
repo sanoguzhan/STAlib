@@ -1,25 +1,40 @@
 import pytest
-from stalib.algorithms import buble_sort
+from stalib.algorithms import buble_sort, merge_sort
 import time
 import random
 
-@pytest.mark.parametrize(
-    "test_input_int,expected_int", [([1,0,90,5,4,2],
-     [0,1,2,4,5,90])]
-)
-
-@pytest.mark.parametrize(
-    "test_input_float,expected_float", [([1.0,0.9,90.2,5.4,4.2,2.1,2.3,], 
-    [0.9, 1.0, 2.1, 2.3, 4.2, 5.4, 90.2])]
-)
-
-def test_bubble_sort(test_input_int,
-    test_input_float, expected_int, expected_float):
+def test_bubble_sort(
+    Integer,
+    String,
+    Float
+):
     """
     Test for buble sort Algortihm
+    input data:
+        test_input_{PythonObject} test input Python list contains Python int, float, string
+        expected_{PythonObject} expected output Python list Python int, float, string
     """
 
-    assert buble_sort(test_input_int) == expected_int
-    assert buble_sort(test_input_float) == expected_float
+    assert buble_sort(Integer.get("input")) == Integer.get("expected")
+    assert buble_sort(String.get("input")) == String.get("expected")
+    assert buble_sort(Float.get("input")) == Float.get("expected")
+
+
+
+def test_merge_sort(    Integer,
+    String,
+    Float):
+
+    """
+    Test for merge sort Algortihm
+    input data:
+        test_input_{PythonObject}:
+             test input Python list contains Python int, float, string
+        expected_{PythonObject}:
+             expected output Python list Python int, float, string
+    """
+    assert merge_sort(Integer.get("input")) == Integer.get("expected")
+    assert merge_sort(String.get("input")) == String.get("expected")
+    assert merge_sort(Float.get("input")) == Float.get("expected")
 
 
