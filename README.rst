@@ -13,6 +13,7 @@ This Librariy is complementary algotrithms and templates to Python's ``built-in`
 ############
 Algorithms:
 ############
+Sort and Search Algorithms:
 
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Sort Algorithms        | `Bubble Sort <https://github.com/sanoguzhan/STAlib>`_,                                                                                                                                                                                                      |
