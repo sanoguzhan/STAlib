@@ -10,6 +10,7 @@ Standard Template and algorithms library of C++ for Python with C-Python API
 This Librariy is complementary algotrithms and templates to Python's ``built-in``.
  The algorithms implemented in C++ and extended to Python and compitable with Python's ``list`` objects.
 
+############
 Algorithms:
 ############
 
@@ -18,7 +19,8 @@ Algorithms:
 |                        | `Merge Sort <https://github.com/sanoguzhan/STAlib>`_,                                                                                                                                                                                                       |
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-##Templates:
+############
+Templates:
 ############
 
 +------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
