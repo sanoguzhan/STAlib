@@ -44,5 +44,5 @@ Import the algorithms or templates:
 
 
 
-For the full listing of functions, see the [Algorithms](#algorithms) and [Tempaltes](#templates)_.
+For the full listing of functions, see `stalib https://pypi.org/search/?q=stalib)`_.
 
