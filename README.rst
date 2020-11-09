@@ -40,7 +40,7 @@ Import the algorithms or templates:
     >>> from stalib.algorithms import merge_sort
     >>> iterable = [1,9,2,4]
     >>> list(merge_sort(iterable))
-    [0, 1, 2, 3]
+    [1, 2, 4, 9]
 
 
 
