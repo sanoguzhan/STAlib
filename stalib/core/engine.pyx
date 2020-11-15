@@ -37,29 +37,33 @@ cdef class Typed:
     
     cpdef QuickSort(self):
         typed = Typed.validate(self.__data)
+        cdef:
+            int size = len(self.__data) -1
+
         if typed is str:
-            return Typed._QuickSortString([i.encode('utf-8') for i in self.__data])
+            return Typed._QuickSortString([i.encode('utf-8') 
+                for i in self.__data], 0, size)
         elif typed is int:
-            return Typed._QuickSortLong(self.__data)
+            return Typed._QuickSortLong(self.__data, 0, size)
         elif typed is float:
-            return Typed._QuickSortDouble(self.__data)
+            return Typed._QuickSortDouble(self.__data, 0, size)
 
     @staticmethod
-    cdef _QuickSortString(vector[string] _data):
+    cdef _QuickSortString(vector[string] _data, int low, int high):
         with nogil:
-            _algorithms.quick_sort(_data)
+            _algorithms.quick_sort(_data, low, high)
         return [v.decode("utf-8") for v in _data]
 
     @staticmethod
-    cdef _QuickSortLong(vector[long] _data):
+    cdef _QuickSortLong(vector[long] _data, int low, int high):
         with nogil:
-            _algorithms.quick_sort(_data)
+            _algorithms.quick_sort(_data, low, high)
         return _data
 
     @staticmethod
-    cdef _QuickSortDouble(vector[double] _data):
+    cdef _QuickSortDouble(vector[double] _data, int low, int high):
         with nogil:
-            _algorithms.quick_sort(_data)
+            _algorithms.quick_sort(_data, low, high)
         return _data
 
     @staticmethod

@@ -8,3 +8,6 @@ def buble_sort(ll: List[Any]):
 
 def merge_sort(ll: List[Any]):
     return Typed(ll).MergeSort()
+
+def quick_sort(ll: List[Any]):
+    return Typed(ll).QuickSort()

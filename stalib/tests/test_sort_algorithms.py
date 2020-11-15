@@ -1,5 +1,5 @@
 import pytest
-from stalib.algorithms import buble_sort, merge_sort
+from stalib.algorithms import buble_sort, merge_sort, quick_sort
 import time
 import random
 

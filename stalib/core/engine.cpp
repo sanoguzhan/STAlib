@@ -896,7 +896,7 @@ struct __pyx_obj_6engine_Typed {
 };
 
 
-/* "engine.pyx":74
+/* "engine.pyx":105
  *         return _data
  *     @staticmethod
  *     cdef validate(list ll):             # <<<<<<<<<<<<<<
@@ -910,7 +910,7 @@ struct __pyx_obj_6engine___pyx_scope_struct__validate {
 };
 
 
-/* "engine.pyx":81
+/* "engine.pyx":112
  *         it = iter(ll)
  *         first_type = type(next(it))
  *         return first_type if all( (type(i) is first_type) for i in it) else False             # <<<<<<<<<<<<<<
@@ -936,6 +936,10 @@ struct __pyx_obj_6engine___pyx_scope_struct_1_genexpr {
 struct __pyx_vtabstruct_6engine_Typed {
   PyObject *(*MergeSort)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch);
   PyObject *(*BubbleSort)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch);
+  PyObject *(*QuickSort)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch);
+  PyObject *(*_QuickSortString)(std::vector<std::string> , int, int);
+  PyObject *(*_QuickSortLong)(std::vector<long> , int, int);
+  PyObject *(*_QuickSortDouble)(std::vector<double> , int, int);
   PyObject *(*_MergeSortString)(std::vector<std::string> );
   PyObject *(*_MergeSortLong)(std::vector<long> );
   PyObject *(*_MergeSortDouble)(std::vector<double> );
@@ -1457,6 +1461,10 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 static PyObject *__pyx_f_6engine_5Typed_MergeSort(struct __pyx_obj_6engine_Typed *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 static PyObject *__pyx_f_6engine_5Typed_BubbleSort(struct __pyx_obj_6engine_Typed *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_6engine_5Typed_QuickSort(struct __pyx_obj_6engine_Typed *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static PyObject *__pyx_f_6engine_5Typed__QuickSortString(std::vector<std::string>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high); /* proto*/
+static PyObject *__pyx_f_6engine_5Typed__QuickSortLong(std::vector<long>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high); /* proto*/
+static PyObject *__pyx_f_6engine_5Typed__QuickSortDouble(std::vector<double>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high); /* proto*/
 static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string>  __pyx_v__data); /* proto*/
 static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_v__data); /* proto*/
 static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __pyx_v__data); /* proto*/
@@ -1518,6 +1526,7 @@ static const char __pyx_k_genexpr[] = "genexpr";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_MergeSort[] = "MergeSort";
+static const char __pyx_k_QuickSort[] = "QuickSort";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_BubbleSort[] = "BubbleSort";
@@ -1531,6 +1540,7 @@ static const char __pyx_k_Typed_validate_locals_genexpr[] = "Typed.validate.<loc
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_n_s_BubbleSort;
 static PyObject *__pyx_n_s_MergeSort;
+static PyObject *__pyx_n_s_QuickSort;
 static PyObject *__pyx_n_s_STALibValidationError;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_Typed;
@@ -1562,9 +1572,10 @@ static PyObject *__pyx_kp_u_utf_8;
 static int __pyx_pf_6engine_5Typed___cinit__(struct __pyx_obj_6engine_Typed *__pyx_v_self, PyObject *__pyx_v_ll); /* proto */
 static PyObject *__pyx_pf_6engine_5Typed_2MergeSort(struct __pyx_obj_6engine_Typed *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6engine_5Typed_4BubbleSort(struct __pyx_obj_6engine_Typed *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6engine_5Typed_6QuickSort(struct __pyx_obj_6engine_Typed *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_6engine_5Typed_8validate_genexpr(PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_6engine_5Typed_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6engine_5Typed_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6engine_5Typed_8__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6engine_5Typed_10__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static PyObject *__pyx_tp_new_6engine_Typed(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6engine___pyx_scope_struct__validate(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6engine___pyx_scope_struct_1_genexpr(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
@@ -2211,7 +2222,7 @@ static PyObject *__pyx_f_6engine_5Typed_BubbleSort(struct __pyx_obj_6engine_Type
  *         elif typed is float:
  *             return Typed._BubbleSortDouble(self.__data)             # <<<<<<<<<<<<<<
  * 
- *     @staticmethod
+ *     cpdef QuickSort(self):
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_11 = __pyx_convert_vector_from_py_double(__pyx_v_self->__pyx___data); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 36, __pyx_L1_error)
@@ -2296,7 +2307,728 @@ static PyObject *__pyx_pf_6engine_5Typed_4BubbleSort(struct __pyx_obj_6engine_Ty
   return __pyx_r;
 }
 
-/* "engine.pyx":39
+/* "engine.pyx":38
+ *             return Typed._BubbleSortDouble(self.__data)
+ * 
+ *     cpdef QuickSort(self):             # <<<<<<<<<<<<<<
+ *         typed = Typed.validate(self.__data)
+ *         cdef:
+ */
+
+static PyObject *__pyx_pw_6engine_5Typed_7QuickSort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_f_6engine_5Typed_QuickSort(struct __pyx_obj_6engine_Typed *__pyx_v_self, int __pyx_skip_dispatch) {
+  PyObject *__pyx_v_typed = NULL;
+  int __pyx_v_size;
+  PyObject *__pyx_8genexpr2__pyx_v_i = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  Py_ssize_t __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  std::vector<std::string>  __pyx_t_9;
+  std::vector<long>  __pyx_t_10;
+  std::vector<double>  __pyx_t_11;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("QuickSort", 0);
+  /* Check if called by wrapper */
+  if (unlikely(__pyx_skip_dispatch)) ;
+  /* Check if overridden in Python */
+  else if (unlikely((Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0) || (Py_TYPE(((PyObject *)__pyx_v_self))->tp_flags & (Py_TPFLAGS_IS_ABSTRACT | Py_TPFLAGS_HEAPTYPE)))) {
+    #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    static PY_UINT64_T __pyx_tp_dict_version = __PYX_DICT_VERSION_INIT, __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+    if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
+      PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      #endif
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_QuickSort); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 38, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_6engine_5Typed_7QuickSort)) {
+        __Pyx_XDECREF(__pyx_r);
+        __Pyx_INCREF(__pyx_t_1);
+        __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_4)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_4);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_3, function);
+          }
+        }
+        __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+        __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 38, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_r = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+        goto __pyx_L0;
+      }
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+      __pyx_tp_dict_version = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
+      __pyx_obj_dict_version = __Pyx_get_object_dict_version(((PyObject *)__pyx_v_self));
+      if (unlikely(__pyx_type_dict_guard != __pyx_tp_dict_version)) {
+        __pyx_tp_dict_version = __pyx_obj_dict_version = __PYX_DICT_VERSION_INIT;
+      }
+      #endif
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_PYTYPE_LOOKUP && CYTHON_USE_TYPE_SLOTS
+    }
+    #endif
+  }
+
+  /* "engine.pyx":39
+ * 
+ *     cpdef QuickSort(self):
+ *         typed = Typed.validate(self.__data)             # <<<<<<<<<<<<<<
+ *         cdef:
+ *             int size = len(self.__data) -1
+ */
+  __pyx_t_1 = __pyx_v_self->__pyx___data;
+  __Pyx_INCREF(__pyx_t_1);
+  __pyx_t_2 = __pyx_f_6engine_5Typed_validate(((PyObject*)__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 39, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_typed = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "engine.pyx":41
+ *         typed = Typed.validate(self.__data)
+ *         cdef:
+ *             int size = len(self.__data) -1             # <<<<<<<<<<<<<<
+ * 
+ *         if typed is str:
+ */
+  __pyx_t_2 = __pyx_v_self->__pyx___data;
+  __Pyx_INCREF(__pyx_t_2);
+  if (unlikely(__pyx_t_2 == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    __PYX_ERR(1, 41, __pyx_L1_error)
+  }
+  __pyx_t_5 = PyList_GET_SIZE(__pyx_t_2); if (unlikely(__pyx_t_5 == ((Py_ssize_t)-1))) __PYX_ERR(1, 41, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_size = (__pyx_t_5 - 1);
+
+  /* "engine.pyx":43
+ *             int size = len(self.__data) -1
+ * 
+ *         if typed is str:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)
+ */
+  __pyx_t_6 = (__pyx_v_typed == ((PyObject *)(&PyUnicode_Type)));
+  __pyx_t_7 = (__pyx_t_6 != 0);
+  if (__pyx_t_7) {
+
+    /* "engine.pyx":44
+ * 
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')             # <<<<<<<<<<<<<<
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:
+ */
+    __Pyx_XDECREF(__pyx_r);
+    { /* enter inner scope */
+      __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L6_error)
+      __Pyx_GOTREF(__pyx_t_2);
+
+      /* "engine.pyx":45
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)             # <<<<<<<<<<<<<<
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ */
+      if (unlikely(__pyx_v_self->__pyx___data == Py_None)) {
+        PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
+        __PYX_ERR(1, 45, __pyx_L6_error)
+      }
+      __pyx_t_1 = __pyx_v_self->__pyx___data; __Pyx_INCREF(__pyx_t_1); __pyx_t_5 = 0;
+      for (;;) {
+        if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_1)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(1, 45, __pyx_L6_error)
+        #else
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_1, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 45, __pyx_L6_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        #endif
+        __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_i, __pyx_t_3);
+        __pyx_t_3 = 0;
+
+        /* "engine.pyx":44
+ * 
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')             # <<<<<<<<<<<<<<
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:
+ */
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr2__pyx_v_i, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 44, __pyx_L6_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_8 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+          __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_4);
+          if (likely(__pyx_t_8)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+            __Pyx_INCREF(__pyx_t_8);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_4, function);
+          }
+        }
+        __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_8, __pyx_kp_u_utf_8) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_kp_u_utf_8);
+        __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 44, __pyx_L6_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(1, 44, __pyx_L6_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+        /* "engine.pyx":45
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)             # <<<<<<<<<<<<<<
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ */
+      }
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_i); __pyx_8genexpr2__pyx_v_i = 0;
+      goto __pyx_L9_exit_scope;
+      __pyx_L6_error:;
+      __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_i); __pyx_8genexpr2__pyx_v_i = 0;
+      goto __pyx_L1_error;
+      __pyx_L9_exit_scope:;
+    } /* exit inner scope */
+
+    /* "engine.pyx":44
+ * 
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')             # <<<<<<<<<<<<<<
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:
+ */
+    __pyx_t_9 = __pyx_convert_vector_from_py_std_3a__3a_string(__pyx_t_2); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 44, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "engine.pyx":45
+ *         if typed is str:
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)             # <<<<<<<<<<<<<<
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ */
+    __pyx_t_2 = __pyx_f_6engine_5Typed__QuickSortString(__pyx_t_9, 0, __pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 44, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+
+    /* "engine.pyx":43
+ *             int size = len(self.__data) -1
+ * 
+ *         if typed is str:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)
+ */
+  }
+
+  /* "engine.pyx":46
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ *         elif typed is float:
+ */
+  __pyx_t_7 = (__pyx_v_typed == ((PyObject *)(&PyInt_Type)));
+  __pyx_t_6 = (__pyx_t_7 != 0);
+  if (__pyx_t_6) {
+
+    /* "engine.pyx":47
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)             # <<<<<<<<<<<<<<
+ *         elif typed is float:
+ *             return Typed._QuickSortDouble(self.__data, 0, size)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_10 = __pyx_convert_vector_from_py_long(__pyx_v_self->__pyx___data); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 47, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_6engine_5Typed__QuickSortLong(__pyx_t_10, 0, __pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 47, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+
+    /* "engine.pyx":46
+ *             return Typed._QuickSortString([i.encode('utf-8')
+ *                 for i in self.__data], 0, size)
+ *         elif typed is int:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ *         elif typed is float:
+ */
+  }
+
+  /* "engine.pyx":48
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ *         elif typed is float:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortDouble(self.__data, 0, size)
+ * 
+ */
+  __pyx_t_6 = (__pyx_v_typed == ((PyObject *)(&PyFloat_Type)));
+  __pyx_t_7 = (__pyx_t_6 != 0);
+  if (__pyx_t_7) {
+
+    /* "engine.pyx":49
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ *         elif typed is float:
+ *             return Typed._QuickSortDouble(self.__data, 0, size)             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_11 = __pyx_convert_vector_from_py_double(__pyx_v_self->__pyx___data); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 49, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_6engine_5Typed__QuickSortDouble(__pyx_t_11, 0, __pyx_v_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 49, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = 0;
+    goto __pyx_L0;
+
+    /* "engine.pyx":48
+ *         elif typed is int:
+ *             return Typed._QuickSortLong(self.__data, 0, size)
+ *         elif typed is float:             # <<<<<<<<<<<<<<
+ *             return Typed._QuickSortDouble(self.__data, 0, size)
+ * 
+ */
+  }
+
+  /* "engine.pyx":38
+ *             return Typed._BubbleSortDouble(self.__data)
+ * 
+ *     cpdef QuickSort(self):             # <<<<<<<<<<<<<<
+ *         typed = Typed.validate(self.__data)
+ *         cdef:
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_AddTraceback("engine.Typed.QuickSort", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_typed);
+  __Pyx_XDECREF(__pyx_8genexpr2__pyx_v_i);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6engine_5Typed_7QuickSort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6engine_5Typed_7QuickSort(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("QuickSort (wrapper)", 0);
+  __pyx_r = __pyx_pf_6engine_5Typed_6QuickSort(((struct __pyx_obj_6engine_Typed *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6engine_5Typed_6QuickSort(struct __pyx_obj_6engine_Typed *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("QuickSort", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_6engine_5Typed_QuickSort(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 38, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("engine.Typed.QuickSort", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "engine.pyx":52
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortString(vector[string] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+static PyObject *__pyx_f_6engine_5Typed__QuickSortString(std::vector<std::string>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high) {
+  std::string __pyx_8genexpr3__pyx_v_v;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  std::vector<std::string> ::iterator __pyx_t_2;
+  std::string __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_QuickSortString", 0);
+
+  /* "engine.pyx":53
+ *     @staticmethod
+ *     cdef _QuickSortString(vector[string] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return [v.decode("utf-8") for v in _data]
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      #endif
+      /*try:*/ {
+
+        /* "engine.pyx":54
+ *     cdef _QuickSortString(vector[string] _data, int low, int high):
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)             # <<<<<<<<<<<<<<
+ *         return [v.decode("utf-8") for v in _data]
+ * 
+ */
+        try {
+          sta::quick_sort<std::string>(__pyx_v__data, __pyx_v_low, __pyx_v_high);
+        } catch(...) {
+          #ifdef WITH_THREAD
+          PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+          #endif
+          __Pyx_CppExn2PyErr();
+          #ifdef WITH_THREAD
+          __Pyx_PyGILState_Release(__pyx_gilstate_save);
+          #endif
+          __PYX_ERR(1, 54, __pyx_L4_error)
+        }
+      }
+
+      /* "engine.pyx":53
+ *     @staticmethod
+ *     cdef _QuickSortString(vector[string] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return [v.decode("utf-8") for v in _data]
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L5;
+        }
+        __pyx_L4_error: {
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L1_error;
+        }
+        __pyx_L5:;
+      }
+  }
+
+  /* "engine.pyx":55
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return [v.decode("utf-8") for v in _data]             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+  __Pyx_XDECREF(__pyx_r);
+  { /* enter inner scope */
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 55, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = __pyx_v__data.begin();
+    for (;;) {
+      if (!(__pyx_t_2 != __pyx_v__data.end())) break;
+      __pyx_t_3 = *__pyx_t_2;
+      ++__pyx_t_2;
+      __pyx_8genexpr3__pyx_v_v = __pyx_t_3;
+      __pyx_t_4 = __Pyx_decode_cpp_string(__pyx_8genexpr3__pyx_v_v, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 55, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 55, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    }
+  } /* exit inner scope */
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "engine.pyx":52
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortString(vector[string] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("engine.Typed._QuickSortString", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "engine.pyx":58
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortLong(vector[long] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+static PyObject *__pyx_f_6engine_5Typed__QuickSortLong(std::vector<long>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_QuickSortLong", 0);
+
+  /* "engine.pyx":59
+ *     @staticmethod
+ *     cdef _QuickSortLong(vector[long] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      #endif
+      /*try:*/ {
+
+        /* "engine.pyx":60
+ *     cdef _QuickSortLong(vector[long] _data, int low, int high):
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)             # <<<<<<<<<<<<<<
+ *         return _data
+ * 
+ */
+        try {
+          sta::quick_sort<long>(__pyx_v__data, __pyx_v_low, __pyx_v_high);
+        } catch(...) {
+          #ifdef WITH_THREAD
+          PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+          #endif
+          __Pyx_CppExn2PyErr();
+          #ifdef WITH_THREAD
+          __Pyx_PyGILState_Release(__pyx_gilstate_save);
+          #endif
+          __PYX_ERR(1, 60, __pyx_L4_error)
+        }
+      }
+
+      /* "engine.pyx":59
+ *     @staticmethod
+ *     cdef _QuickSortLong(vector[long] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L5;
+        }
+        __pyx_L4_error: {
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L1_error;
+        }
+        __pyx_L5:;
+      }
+  }
+
+  /* "engine.pyx":61
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_convert_vector_to_py_long(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "engine.pyx":58
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortLong(vector[long] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("engine.Typed._QuickSortLong", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "engine.pyx":64
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortDouble(vector[double] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+static PyObject *__pyx_f_6engine_5Typed__QuickSortDouble(std::vector<double>  __pyx_v__data, int __pyx_v_low, int __pyx_v_high) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_QuickSortDouble", 0);
+
+  /* "engine.pyx":65
+ *     @staticmethod
+ *     cdef _QuickSortDouble(vector[double] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data
+ */
+  {
+      #ifdef WITH_THREAD
+      PyThreadState *_save;
+      Py_UNBLOCK_THREADS
+      __Pyx_FastGIL_Remember();
+      #endif
+      /*try:*/ {
+
+        /* "engine.pyx":66
+ *     cdef _QuickSortDouble(vector[double] _data, int low, int high):
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)             # <<<<<<<<<<<<<<
+ *         return _data
+ * 
+ */
+        try {
+          sta::quick_sort<double>(__pyx_v__data, __pyx_v_low, __pyx_v_high);
+        } catch(...) {
+          #ifdef WITH_THREAD
+          PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+          #endif
+          __Pyx_CppExn2PyErr();
+          #ifdef WITH_THREAD
+          __Pyx_PyGILState_Release(__pyx_gilstate_save);
+          #endif
+          __PYX_ERR(1, 66, __pyx_L4_error)
+        }
+      }
+
+      /* "engine.pyx":65
+ *     @staticmethod
+ *     cdef _QuickSortDouble(vector[double] _data, int low, int high):
+ *         with nogil:             # <<<<<<<<<<<<<<
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data
+ */
+      /*finally:*/ {
+        /*normal exit:*/{
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L5;
+        }
+        __pyx_L4_error: {
+          #ifdef WITH_THREAD
+          __Pyx_FastGIL_Forget();
+          Py_BLOCK_THREADS
+          #endif
+          goto __pyx_L1_error;
+        }
+        __pyx_L5:;
+      }
+  }
+
+  /* "engine.pyx":67
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ *         return _data             # <<<<<<<<<<<<<<
+ * 
+ *     @staticmethod
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 67, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "engine.pyx":64
+ * 
+ *     @staticmethod
+ *     cdef _QuickSortDouble(vector[double] _data, int low, int high):             # <<<<<<<<<<<<<<
+ *         with nogil:
+ *             _algorithms.quick_sort(_data, low, high)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("engine.Typed._QuickSortDouble", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "engine.pyx":70
  * 
  *     @staticmethod
  *     cdef _MergeSortString(vector[string] _data):             # <<<<<<<<<<<<<<
@@ -2305,7 +3037,7 @@ static PyObject *__pyx_pf_6engine_5Typed_4BubbleSort(struct __pyx_obj_6engine_Ty
  */
 
 static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string>  __pyx_v__data) {
-  std::string __pyx_8genexpr2__pyx_v_v;
+  std::string __pyx_8genexpr4__pyx_v_v;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2317,7 +3049,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_MergeSortString", 0);
 
-  /* "engine.pyx":40
+  /* "engine.pyx":71
  *     @staticmethod
  *     cdef _MergeSortString(vector[string] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2332,7 +3064,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":41
+        /* "engine.pyx":72
  *     cdef _MergeSortString(vector[string] _data):
  *         with nogil:
  *             _algorithms.merge_sort(_data)             # <<<<<<<<<<<<<<
@@ -2349,11 +3081,11 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 41, __pyx_L4_error)
+          __PYX_ERR(1, 72, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":40
+      /* "engine.pyx":71
  *     @staticmethod
  *     cdef _MergeSortString(vector[string] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2379,7 +3111,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
       }
   }
 
-  /* "engine.pyx":42
+  /* "engine.pyx":73
  *         with nogil:
  *             _algorithms.merge_sort(_data)
  *         return [v.decode("utf-8") for v in _data]             # <<<<<<<<<<<<<<
@@ -2388,17 +3120,17 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 42, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 73, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v__data.begin();
     for (;;) {
       if (!(__pyx_t_2 != __pyx_v__data.end())) break;
       __pyx_t_3 = *__pyx_t_2;
       ++__pyx_t_2;
-      __pyx_8genexpr2__pyx_v_v = __pyx_t_3;
-      __pyx_t_4 = __Pyx_decode_cpp_string(__pyx_8genexpr2__pyx_v_v, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 42, __pyx_L1_error)
+      __pyx_8genexpr4__pyx_v_v = __pyx_t_3;
+      __pyx_t_4 = __Pyx_decode_cpp_string(__pyx_8genexpr4__pyx_v_v, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 73, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 42, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 73, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   } /* exit inner scope */
@@ -2406,7 +3138,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":39
+  /* "engine.pyx":70
  * 
  *     @staticmethod
  *     cdef _MergeSortString(vector[string] _data):             # <<<<<<<<<<<<<<
@@ -2426,7 +3158,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortString(std::vector<std::string
   return __pyx_r;
 }
 
-/* "engine.pyx":45
+/* "engine.pyx":76
  * 
  *     @staticmethod
  *     cdef _MergeSortLong(vector[long] _data):             # <<<<<<<<<<<<<<
@@ -2443,7 +3175,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_MergeSortLong", 0);
 
-  /* "engine.pyx":46
+  /* "engine.pyx":77
  *     @staticmethod
  *     cdef _MergeSortLong(vector[long] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2458,7 +3190,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":47
+        /* "engine.pyx":78
  *     cdef _MergeSortLong(vector[long] _data):
  *         with nogil:
  *             _algorithms.merge_sort(_data)             # <<<<<<<<<<<<<<
@@ -2475,11 +3207,11 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 47, __pyx_L4_error)
+          __PYX_ERR(1, 78, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":46
+      /* "engine.pyx":77
  *     @staticmethod
  *     cdef _MergeSortLong(vector[long] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2505,7 +3237,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
       }
   }
 
-  /* "engine.pyx":48
+  /* "engine.pyx":79
  *         with nogil:
  *             _algorithms.merge_sort(_data)
  *         return _data             # <<<<<<<<<<<<<<
@@ -2513,13 +3245,13 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_long(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 48, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_long(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":45
+  /* "engine.pyx":76
  * 
  *     @staticmethod
  *     cdef _MergeSortLong(vector[long] _data):             # <<<<<<<<<<<<<<
@@ -2538,7 +3270,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortLong(std::vector<long>  __pyx_
   return __pyx_r;
 }
 
-/* "engine.pyx":51
+/* "engine.pyx":82
  * 
  *     @staticmethod
  *     cdef _MergeSortDouble(vector[double] _data):             # <<<<<<<<<<<<<<
@@ -2555,7 +3287,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_MergeSortDouble", 0);
 
-  /* "engine.pyx":52
+  /* "engine.pyx":83
  *     @staticmethod
  *     cdef _MergeSortDouble(vector[double] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2570,7 +3302,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":53
+        /* "engine.pyx":84
  *     cdef _MergeSortDouble(vector[double] _data):
  *         with nogil:
  *             _algorithms.merge_sort(_data)             # <<<<<<<<<<<<<<
@@ -2587,11 +3319,11 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 53, __pyx_L4_error)
+          __PYX_ERR(1, 84, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":52
+      /* "engine.pyx":83
  *     @staticmethod
  *     cdef _MergeSortDouble(vector[double] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2617,7 +3349,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
       }
   }
 
-  /* "engine.pyx":54
+  /* "engine.pyx":85
  *         with nogil:
  *             _algorithms.merge_sort(_data)
  *         return _data             # <<<<<<<<<<<<<<
@@ -2625,13 +3357,13 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 54, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 85, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":51
+  /* "engine.pyx":82
  * 
  *     @staticmethod
  *     cdef _MergeSortDouble(vector[double] _data):             # <<<<<<<<<<<<<<
@@ -2650,7 +3382,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
   return __pyx_r;
 }
 
-/* "engine.pyx":57
+/* "engine.pyx":88
  * 
  *     @staticmethod
  *     cdef _BubbleSortString(vector[string] _data):             # <<<<<<<<<<<<<<
@@ -2659,7 +3391,7 @@ static PyObject *__pyx_f_6engine_5Typed__MergeSortDouble(std::vector<double>  __
  */
 
 static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::string>  __pyx_v__data) {
-  std::string __pyx_8genexpr3__pyx_v_v;
+  std::string __pyx_8genexpr5__pyx_v_v;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2671,7 +3403,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_BubbleSortString", 0);
 
-  /* "engine.pyx":58
+  /* "engine.pyx":89
  *     @staticmethod
  *     cdef _BubbleSortString(vector[string] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2686,7 +3418,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":59
+        /* "engine.pyx":90
  *     cdef _BubbleSortString(vector[string] _data):
  *         with nogil:
  *             _algorithms.bubble_sort(_data)             # <<<<<<<<<<<<<<
@@ -2703,11 +3435,11 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 59, __pyx_L4_error)
+          __PYX_ERR(1, 90, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":58
+      /* "engine.pyx":89
  *     @staticmethod
  *     cdef _BubbleSortString(vector[string] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2733,7 +3465,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
       }
   }
 
-  /* "engine.pyx":60
+  /* "engine.pyx":91
  *         with nogil:
  *             _algorithms.bubble_sort(_data)
  *         return [v.decode("utf-8") for v in _data]             # <<<<<<<<<<<<<<
@@ -2742,17 +3474,17 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 60, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v__data.begin();
     for (;;) {
       if (!(__pyx_t_2 != __pyx_v__data.end())) break;
       __pyx_t_3 = *__pyx_t_2;
       ++__pyx_t_2;
-      __pyx_8genexpr3__pyx_v_v = __pyx_t_3;
-      __pyx_t_4 = __Pyx_decode_cpp_string(__pyx_8genexpr3__pyx_v_v, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 60, __pyx_L1_error)
+      __pyx_8genexpr5__pyx_v_v = __pyx_t_3;
+      __pyx_t_4 = __Pyx_decode_cpp_string(__pyx_8genexpr5__pyx_v_v, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeUTF8); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 60, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 91, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   } /* exit inner scope */
@@ -2760,7 +3492,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":57
+  /* "engine.pyx":88
  * 
  *     @staticmethod
  *     cdef _BubbleSortString(vector[string] _data):             # <<<<<<<<<<<<<<
@@ -2780,7 +3512,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortString(std::vector<std::strin
   return __pyx_r;
 }
 
-/* "engine.pyx":63
+/* "engine.pyx":94
  * 
  *     @staticmethod
  *     cdef _BubbleSortLong(vector[long] _data):             # <<<<<<<<<<<<<<
@@ -2797,7 +3529,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_BubbleSortLong", 0);
 
-  /* "engine.pyx":64
+  /* "engine.pyx":95
  *     @staticmethod
  *     cdef _BubbleSortLong(vector[long] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2812,7 +3544,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":65
+        /* "engine.pyx":96
  *     cdef _BubbleSortLong(vector[long] _data):
  *         with nogil:
  *             _algorithms.bubble_sort(_data)             # <<<<<<<<<<<<<<
@@ -2829,11 +3561,11 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 65, __pyx_L4_error)
+          __PYX_ERR(1, 96, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":64
+      /* "engine.pyx":95
  *     @staticmethod
  *     cdef _BubbleSortLong(vector[long] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2859,7 +3591,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
       }
   }
 
-  /* "engine.pyx":66
+  /* "engine.pyx":97
  *         with nogil:
  *             _algorithms.bubble_sort(_data)
  *         return _data             # <<<<<<<<<<<<<<
@@ -2867,13 +3599,13 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
  *     @staticmethod
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_long(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 66, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_long(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 97, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":63
+  /* "engine.pyx":94
  * 
  *     @staticmethod
  *     cdef _BubbleSortLong(vector[long] _data):             # <<<<<<<<<<<<<<
@@ -2892,7 +3624,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
   return __pyx_r;
 }
 
-/* "engine.pyx":69
+/* "engine.pyx":100
  * 
  *     @staticmethod
  *     cdef _BubbleSortDouble(vector[double] _data):             # <<<<<<<<<<<<<<
@@ -2909,7 +3641,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_BubbleSortDouble", 0);
 
-  /* "engine.pyx":70
+  /* "engine.pyx":101
  *     @staticmethod
  *     cdef _BubbleSortDouble(vector[double] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2924,7 +3656,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
       #endif
       /*try:*/ {
 
-        /* "engine.pyx":71
+        /* "engine.pyx":102
  *     cdef _BubbleSortDouble(vector[double] _data):
  *         with nogil:
  *             _algorithms.bubble_sort(_data)             # <<<<<<<<<<<<<<
@@ -2941,11 +3673,11 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
           #ifdef WITH_THREAD
           __Pyx_PyGILState_Release(__pyx_gilstate_save);
           #endif
-          __PYX_ERR(1, 71, __pyx_L4_error)
+          __PYX_ERR(1, 102, __pyx_L4_error)
         }
       }
 
-      /* "engine.pyx":70
+      /* "engine.pyx":101
  *     @staticmethod
  *     cdef _BubbleSortDouble(vector[double] _data):
  *         with nogil:             # <<<<<<<<<<<<<<
@@ -2971,7 +3703,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
       }
   }
 
-  /* "engine.pyx":72
+  /* "engine.pyx":103
  *         with nogil:
  *             _algorithms.bubble_sort(_data)
  *         return _data             # <<<<<<<<<<<<<<
@@ -2979,13 +3711,13 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
  *     cdef validate(list ll):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 72, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_vector_to_py_double(__pyx_v__data); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":69
+  /* "engine.pyx":100
  * 
  *     @staticmethod
  *     cdef _BubbleSortDouble(vector[double] _data):             # <<<<<<<<<<<<<<
@@ -3005,7 +3737,7 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  _
 }
 static PyObject *__pyx_gb_6engine_5Typed_8validate_2generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "engine.pyx":81
+/* "engine.pyx":112
  *         it = iter(ll)
  *         first_type = type(next(it))
  *         return first_type if all( (type(i) is first_type) for i in it) else False             # <<<<<<<<<<<<<<
@@ -3025,7 +3757,7 @@ static PyObject *__pyx_pf_6engine_5Typed_8validate_genexpr(PyObject *__pyx_self)
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_6engine___pyx_scope_struct_1_genexpr *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(1, 81, __pyx_L1_error)
+    __PYX_ERR(1, 112, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
@@ -3033,7 +3765,7 @@ static PyObject *__pyx_pf_6engine_5Typed_8validate_genexpr(PyObject *__pyx_self)
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_outer_scope));
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_outer_scope);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6engine_5Typed_8validate_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_Typed_validate_locals_genexpr, __pyx_n_s_engine); if (unlikely(!gen)) __PYX_ERR(1, 81, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_6engine_5Typed_8validate_2generator, NULL, (PyObject *) __pyx_cur_scope, __pyx_n_s_genexpr, __pyx_n_s_Typed_validate_locals_genexpr, __pyx_n_s_engine); if (unlikely(!gen)) __PYX_ERR(1, 112, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -3071,32 +3803,32 @@ static PyObject *__pyx_gb_6engine_5Typed_8validate_2generator(__pyx_CoroutineObj
     return NULL;
   }
   __pyx_L3_first_run:;
-  if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 81, __pyx_L1_error)
-  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it)) { __Pyx_RaiseClosureNameError("it"); __PYX_ERR(1, 81, __pyx_L1_error) }
+  if (unlikely(!__pyx_sent_value)) __PYX_ERR(1, 112, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it)) { __Pyx_RaiseClosureNameError("it"); __PYX_ERR(1, 112, __pyx_L1_error) }
   if (likely(PyList_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it)) || PyTuple_CheckExact(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it)) {
     __pyx_t_1 = __pyx_cur_scope->__pyx_outer_scope->__pyx_v_it; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 81, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_cur_scope->__pyx_outer_scope->__pyx_v_it); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 81, __pyx_L1_error)
+    __pyx_t_3 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(1, 81, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(1, 112, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 81, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(1, 81, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(1, 112, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 81, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 112, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -3106,7 +3838,7 @@ static PyObject *__pyx_gb_6engine_5Typed_8validate_2generator(__pyx_CoroutineObj
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 81, __pyx_L1_error)
+          else __PYX_ERR(1, 112, __pyx_L1_error)
         }
         break;
       }
@@ -3116,7 +3848,7 @@ static PyObject *__pyx_gb_6engine_5Typed_8validate_2generator(__pyx_CoroutineObj
     __Pyx_XDECREF_SET(__pyx_cur_scope->__pyx_v_i, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
-    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_first_type)) { __Pyx_RaiseClosureNameError("first_type"); __PYX_ERR(1, 81, __pyx_L1_error) }
+    if (unlikely(!__pyx_cur_scope->__pyx_outer_scope->__pyx_v_first_type)) { __Pyx_RaiseClosureNameError("first_type"); __PYX_ERR(1, 112, __pyx_L1_error) }
     __pyx_t_5 = (((PyObject *)Py_TYPE(__pyx_cur_scope->__pyx_v_i)) == ((PyObject *)__pyx_cur_scope->__pyx_outer_scope->__pyx_v_first_type));
     __pyx_t_6 = ((!(__pyx_t_5 != 0)) != 0);
     if (__pyx_t_6) {
@@ -3154,7 +3886,7 @@ static PyObject *__pyx_gb_6engine_5Typed_8validate_2generator(__pyx_CoroutineObj
   return __pyx_r;
 }
 
-/* "engine.pyx":74
+/* "engine.pyx":105
  *         return _data
  *     @staticmethod
  *     cdef validate(list ll):             # <<<<<<<<<<<<<<
@@ -3178,25 +3910,25 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_6engine___pyx_scope_struct__validate *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(1, 74, __pyx_L1_error)
+    __PYX_ERR(1, 105, __pyx_L1_error)
   } else {
     __Pyx_GOTREF(__pyx_cur_scope);
   }
 
-  /* "engine.pyx":79
+  /* "engine.pyx":110
  *         :param:
  *             ll: list which may contain any type of elements"""
  *         it = iter(ll)             # <<<<<<<<<<<<<<
  *         first_type = type(next(it))
  *         return first_type if all( (type(i) is first_type) for i in it) else False
  */
-  __pyx_t_1 = PyObject_GetIter(__pyx_v_ll); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 79, __pyx_L1_error)
+  __pyx_t_1 = PyObject_GetIter(__pyx_v_ll); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 110, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_cur_scope->__pyx_v_it = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "engine.pyx":80
+  /* "engine.pyx":111
  *             ll: list which may contain any type of elements"""
  *         it = iter(ll)
  *         first_type = type(next(it))             # <<<<<<<<<<<<<<
@@ -3205,7 +3937,7 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
  */
   __pyx_t_1 = __pyx_cur_scope->__pyx_v_it;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyIter_Next(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 80, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyIter_Next(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_INCREF(((PyObject *)Py_TYPE(__pyx_t_2)));
@@ -3213,7 +3945,7 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
   __pyx_cur_scope->__pyx_v_first_type = ((PyTypeObject*)((PyObject *)Py_TYPE(__pyx_t_2)));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "engine.pyx":81
+  /* "engine.pyx":112
  *         it = iter(ll)
  *         first_type = type(next(it))
  *         return first_type if all( (type(i) is first_type) for i in it) else False             # <<<<<<<<<<<<<<
@@ -3221,12 +3953,12 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_pf_6engine_5Typed_8validate_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 81, __pyx_L1_error)
+  __pyx_t_1 = __pyx_pf_6engine_5Typed_8validate_genexpr(((PyObject*)__pyx_cur_scope)); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 81, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_Generator_Next(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(1, 81, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_4) {
     __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_v_first_type));
@@ -3239,7 +3971,7 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "engine.pyx":74
+  /* "engine.pyx":105
  *         return _data
  *     @staticmethod
  *     cdef validate(list ll):             # <<<<<<<<<<<<<<
@@ -3268,19 +4000,19 @@ static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll) {
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6engine_5Typed_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6engine_5Typed_7__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6engine_5Typed_9__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6engine_5Typed_9__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6engine_5Typed_6__reduce_cython__(((struct __pyx_obj_6engine_Typed *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6engine_5Typed_8__reduce_cython__(((struct __pyx_obj_6engine_Typed *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6engine_5Typed_6__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self) {
+static PyObject *__pyx_pf_6engine_5Typed_8__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3325,19 +4057,19 @@ static PyObject *__pyx_pf_6engine_5Typed_6__reduce_cython__(CYTHON_UNUSED struct
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6engine_5Typed_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6engine_5Typed_9__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6engine_5Typed_11__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6engine_5Typed_11__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6engine_5Typed_8__setstate_cython__(((struct __pyx_obj_6engine_Typed *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6engine_5Typed_10__setstate_cython__(((struct __pyx_obj_6engine_Typed *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6engine_5Typed_8__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6engine_5Typed_10__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6engine_Typed *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4213,8 +4945,9 @@ static int __pyx_tp_clear_6engine_Typed(PyObject *o) {
 static PyMethodDef __pyx_methods_6engine_Typed[] = {
   {"MergeSort", (PyCFunction)__pyx_pw_6engine_5Typed_3MergeSort, METH_NOARGS, 0},
   {"BubbleSort", (PyCFunction)__pyx_pw_6engine_5Typed_5BubbleSort, METH_NOARGS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6engine_5Typed_7__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6engine_5Typed_9__setstate_cython__, METH_O, 0},
+  {"QuickSort", (PyCFunction)__pyx_pw_6engine_5Typed_7QuickSort, METH_NOARGS, 0},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6engine_5Typed_9__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6engine_5Typed_11__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -4567,6 +5300,7 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_BubbleSort, __pyx_k_BubbleSort, sizeof(__pyx_k_BubbleSort), 0, 0, 1, 1},
   {&__pyx_n_s_MergeSort, __pyx_k_MergeSort, sizeof(__pyx_k_MergeSort), 0, 0, 1, 1},
+  {&__pyx_n_s_QuickSort, __pyx_k_QuickSort, sizeof(__pyx_k_QuickSort), 0, 0, 1, 1},
   {&__pyx_n_s_STALibValidationError, __pyx_k_STALibValidationError, sizeof(__pyx_k_STALibValidationError), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_Typed, __pyx_k_Typed, sizeof(__pyx_k_Typed), 0, 0, 1, 1},
@@ -4683,6 +5417,10 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtabptr_6engine_Typed = &__pyx_vtable_6engine_Typed;
   __pyx_vtable_6engine_Typed.MergeSort = (PyObject *(*)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch))__pyx_f_6engine_5Typed_MergeSort;
   __pyx_vtable_6engine_Typed.BubbleSort = (PyObject *(*)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch))__pyx_f_6engine_5Typed_BubbleSort;
+  __pyx_vtable_6engine_Typed.QuickSort = (PyObject *(*)(struct __pyx_obj_6engine_Typed *, int __pyx_skip_dispatch))__pyx_f_6engine_5Typed_QuickSort;
+  __pyx_vtable_6engine_Typed._QuickSortString = (PyObject *(*)(std::vector<std::string> , int, int))__pyx_f_6engine_5Typed__QuickSortString;
+  __pyx_vtable_6engine_Typed._QuickSortLong = (PyObject *(*)(std::vector<long> , int, int))__pyx_f_6engine_5Typed__QuickSortLong;
+  __pyx_vtable_6engine_Typed._QuickSortDouble = (PyObject *(*)(std::vector<double> , int, int))__pyx_f_6engine_5Typed__QuickSortDouble;
   __pyx_vtable_6engine_Typed._MergeSortString = (PyObject *(*)(std::vector<std::string> ))__pyx_f_6engine_5Typed__MergeSortString;
   __pyx_vtable_6engine_Typed._MergeSortLong = (PyObject *(*)(std::vector<long> ))__pyx_f_6engine_5Typed__MergeSortLong;
   __pyx_vtable_6engine_Typed._MergeSortDouble = (PyObject *(*)(std::vector<double> ))__pyx_f_6engine_5Typed__MergeSortDouble;
@@ -4701,7 +5439,7 @@ static int __Pyx_modinit_type_init_code(void) {
   if (PyObject_SetAttr(__pyx_m, __pyx_n_s_Typed, (PyObject *)&__pyx_type_6engine_Typed) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6engine_Typed) < 0) __PYX_ERR(1, 8, __pyx_L1_error)
   __pyx_ptype_6engine_Typed = &__pyx_type_6engine_Typed;
-  if (PyType_Ready(&__pyx_type_6engine___pyx_scope_struct__validate) < 0) __PYX_ERR(1, 74, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6engine___pyx_scope_struct__validate) < 0) __PYX_ERR(1, 105, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_6engine___pyx_scope_struct__validate.tp_print = 0;
   #endif
@@ -4709,7 +5447,7 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_type_6engine___pyx_scope_struct__validate.tp_getattro = __Pyx_PyObject_GenericGetAttrNoDict;
   }
   __pyx_ptype_6engine___pyx_scope_struct__validate = &__pyx_type_6engine___pyx_scope_struct__validate;
-  if (PyType_Ready(&__pyx_type_6engine___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(1, 81, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6engine___pyx_scope_struct_1_genexpr) < 0) __PYX_ERR(1, 112, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_6engine___pyx_scope_struct_1_genexpr.tp_print = 0;
   #endif

@@ -97,23 +97,24 @@ void merge_sort(std::vector<T> &vec){
 template<typename T>
 int partition(std::vector<T> &vec, int low, int high){
     
-    int pivot = vec.at(high);
-    int i = low - 1;
+    T pivot = vec.at(high);
+    int i = (low - 1);
 
-    for(i; i <= high; i++){
-        if(vec.at(i) < pivot){
-            low++;
-            swap(&vec[low], &vec[i]);
-        }
-    }
-    swap(&vec[low++], &vec[high]); 
-    return i++;
+   for (int j = low; j <= high - 1; j++){  
+        if (vec.at(j) < pivot)  
+        {  
+            i++; 
+            swap(&vec[i], &vec[j]);  
+        }  
+    }  
+    swap(&vec[i + 1], &vec[high]);  
+    return i++;  
 }
 
 template<typename T>
-void quick_sort(std::vector<T> &vec){
-    int low = 0;
-    int high = vec.size()-1;
+void quick_sort(std::vector<T> &vec, 
+                int low, int high){
+    if (vec.size() <= 1) return;
     if(low < high){
 
         int pivot = partition(vec, low, high);
