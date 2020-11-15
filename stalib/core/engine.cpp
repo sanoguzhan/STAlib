@@ -4,6 +4,12 @@
 {
     "distutils": {
         "depends": [],
+        "extra_compile_args": [
+            "-fopenmp"
+        ],
+        "extra_link_args": [
+            "-fopenmp"
+        ],
         "include_dirs": [
             "stalib/core/algorithms/sort",
             "stalib/core/algorithms/search"

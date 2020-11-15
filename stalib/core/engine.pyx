@@ -35,6 +35,33 @@ cdef class Typed:
         elif typed is float:
             return Typed._BubbleSortDouble(self.__data)
     
+    cpdef QuickSort(self):
+        typed = Typed.validate(self.__data)
+        if typed is str:
+            return Typed._QuickSortString([i.encode('utf-8') for i in self.__data])
+        elif typed is int:
+            return Typed._QuickSortLong(self.__data)
+        elif typed is float:
+            return Typed._QuickSortDouble(self.__data)
+
+    @staticmethod
+    cdef _QuickSortString(vector[string] _data):
+        with nogil:
+            _algorithms.quick_sort(_data)
+        return [v.decode("utf-8") for v in _data]
+
+    @staticmethod
+    cdef _QuickSortLong(vector[long] _data):
+        with nogil:
+            _algorithms.quick_sort(_data)
+        return _data
+
+    @staticmethod
+    cdef _QuickSortDouble(vector[double] _data):
+        with nogil:
+            _algorithms.quick_sort(_data)
+        return _data
+
     @staticmethod
     cdef _MergeSortString(vector[string] _data):
         with nogil:

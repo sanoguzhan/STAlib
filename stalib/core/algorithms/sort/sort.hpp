@@ -7,6 +7,13 @@
 namespace sta{
 
 template<typename T>
+struct TypeHelper
+{
+    typedef std::vector<T> Vector;
+
+};
+
+template<typename T>
 void swap(T *rh, T *lh){
     T temp = *rh;
     *rh = *lh;
@@ -85,6 +92,36 @@ void merge_sort(std::vector<T> &vec){
     merge_sort(right);
     merge(left,right,vec);
     
+}
+
+template<typename T>
+int partition(std::vector<T> &vec, int low, int high){
+    
+    int pivot = vec.at(high);
+    int i = low - 1;
+
+    for(i; i <= high; i++){
+        if(vec.at(i) < pivot){
+            low++;
+            swap(&vec[low], &vec[i]);
+        }
+    }
+    swap(&vec[low++], &vec[high]); 
+    return i++;
+}
+
+template<typename T>
+void quick_sort(std::vector<T> &vec){
+    int low = 0;
+    int high = vec.size()-1;
+    if(low < high){
+
+        int pivot = partition(vec, low, high);
+
+        quick_sort(vec, low, pivot--);
+        quick_sort(vec, pivot++, high);
+    }
+
 }
 
 
