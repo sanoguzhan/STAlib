@@ -4,8 +4,6 @@ STALib
 Standard Template and algorithms library of C++ for Python with C-Python API
 
 
-.. image:: https://readthedocs.org/projects/more-itertools/badge/?version=latest
-  :target: https://more-itertools.readthedocs.io/en/stable/
 
 Stalib Library includes complementary algotrithms and templates to Python's ``built-in``.
 The algorithms implemented in C++ and extended to Python and compitable with Python's ``list`` objects.
