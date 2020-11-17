@@ -19,8 +19,10 @@ cdef class Typed:
         self.__data = ll
 
     cpdef MergeSort(self):
-    """ Merge Sort Entry Point to C++ Merge sort function
-        Type is Casted a proper value"""
+        """ 
+        Merge Sort Entry Point to C++ Merge sort function
+        Type is Casted a proper value
+        """
         typed = Typed.validate(self.__data)
         if typed is str:
             return Typed._MergeSortString([i.encode('utf-8') for i in self.__data])
@@ -31,8 +33,10 @@ cdef class Typed:
 
 
     cpdef BubbleSort(self):
-        """ Bubble Sort Entry Point to C++ Bubble sort function
-        Type is Casted a proper value"""
+        """
+        Bubble Sort Entry Point to C++ Bubble sort function
+        Type is Casted a proper value
+        """
         typed = Typed.validate(self.__data)
         if typed is str:
             return Typed._BubbleSortString([i.encode('utf-8') for i in self.__data])
@@ -42,8 +46,10 @@ cdef class Typed:
             return Typed._BubbleSortDouble(self.__data)
     
     cpdef QuickSort(self):
-        """ Quick Sort Entry Point to C++ Quick sort function
-                Type is Casted a proper value"""
+        """
+        Quick Sort Entry Point to C++ Quick sort function
+        Type is Casted a proper value
+        """
         typed = Typed.validate(self.__data)
         cdef:
             int size = len(self.__data) -1

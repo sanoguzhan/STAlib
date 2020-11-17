@@ -51,7 +51,7 @@ ext_libraries = [['sort', {
 ]]
 
 def get_long_description():
-    readme = open('README.rst').read()
+    readme = open('README.md').read()
     version_lines = []
     with open('docs/versions.rst') as infile:
         next(infile)
