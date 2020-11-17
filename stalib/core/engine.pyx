@@ -5,18 +5,22 @@ from libcpp.string cimport string
 import cython 
 
 
+
 cdef class Typed:
     """
     Type Casting Cython Class
     for data casting and reference input for C++ functions
     Data typed for function templates defined here for compilation
     """
+
     cdef:
         list __data
     def __cinit__(self, ll):
         self.__data = ll
 
     cpdef MergeSort(self):
+    """ Merge Sort Entry Point to C++ Merge sort function
+        Type is Casted a proper value"""
         typed = Typed.validate(self.__data)
         if typed is str:
             return Typed._MergeSortString([i.encode('utf-8') for i in self.__data])
@@ -27,6 +31,8 @@ cdef class Typed:
 
 
     cpdef BubbleSort(self):
+        """ Bubble Sort Entry Point to C++ Bubble sort function
+        Type is Casted a proper value"""
         typed = Typed.validate(self.__data)
         if typed is str:
             return Typed._BubbleSortString([i.encode('utf-8') for i in self.__data])
@@ -36,34 +42,37 @@ cdef class Typed:
             return Typed._BubbleSortDouble(self.__data)
     
     cpdef QuickSort(self):
+        """ Quick Sort Entry Point to C++ Quick sort function
+                Type is Casted a proper value"""
         typed = Typed.validate(self.__data)
         cdef:
             int size = len(self.__data) -1
 
         if typed is str:
             return Typed._QuickSortString([i.encode('utf-8') 
-                for i in self.__data], 0, size)
+                for i in self.__data], 0, size, 0)
         elif typed is int:
-            return Typed._QuickSortLong(self.__data, 0, size)
+            return Typed._QuickSortLong(self.__data, 0, size, 0)
         elif typed is float:
-            return Typed._QuickSortDouble(self.__data, 0, size)
+            return Typed._QuickSortDouble(self.__data, 0, size, 0)
+
 
     @staticmethod
-    cdef _QuickSortString(vector[string] _data, int low, int high):
+    cdef _QuickSortString(vector[string] _data, int low, int high, int pivot):
         with nogil:
-            _algorithms.quick_sort(_data, low, high)
+            _algorithms.quick_sort(_data, low, high, pivot)
         return [v.decode("utf-8") for v in _data]
 
     @staticmethod
-    cdef _QuickSortLong(vector[long] _data, int low, int high):
+    cdef _QuickSortLong(vector[long] _data, int low, int high, int pivot):
         with nogil:
-            _algorithms.quick_sort(_data, low, high)
+            _algorithms.quick_sort(_data, low, high, pivot)
         return _data
 
     @staticmethod
-    cdef _QuickSortDouble(vector[double] _data, int low, int high):
+    cdef _QuickSortDouble(vector[double] _data, int low, int high, int pivot):
         with nogil:
-            _algorithms.quick_sort(_data, low, high)
+            _algorithms.quick_sort(_data, low, high, pivot)
         return _data
 
     @staticmethod
@@ -111,4 +120,3 @@ cdef class Typed:
         first_type = type(next(it))
         return first_type if all( (type(i) is first_type) for i in it) else False
 
-  
