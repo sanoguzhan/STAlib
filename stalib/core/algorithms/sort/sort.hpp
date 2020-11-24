@@ -6,6 +6,7 @@
 
 namespace sta{
 
+
 template<typename T>
 struct TypeHelper
 {
@@ -13,6 +14,12 @@ struct TypeHelper
 
 };
 
+/**
+ * Swap Function Template.
+ *  Swaps two elements of a vector 
+ * @param rh: pointer to element of vector 
+ * @param rh: pointer to element of vector
+ */
 template<typename T>
 void swap(T *rh, T *lh){
     T temp = *rh;
@@ -20,6 +27,13 @@ void swap(T *rh, T *lh){
     *lh = temp;
 }
 
+
+/**
+ * Bubble Sort Function Template.
+ *    Implementation of Bubble sort Algorithm
+ * @param vec: (reference) vector container 
+ * @return sorted vector
+ */
 template < typename T>
 void bubble_sort(std::vector<T> &vec){
     
@@ -40,7 +54,13 @@ void bubble_sort(std::vector<T> &vec){
     }
 }
 
-
+/**
+ * Merge Function
+ *    Merge given vectors
+ * @param left: (reference) vector container left side of merged vector.
+ * @param right: (reference) vector container right side of merged vector.
+ * @param vec: (reference) vector container, left and right is to be merge into
+ */
 template<typename T>
 void merge(std::vector<T> &left, 
             std::vector<T> &right,
@@ -77,6 +97,13 @@ void merge(std::vector<T> &left,
 
 }
 
+
+/**
+ * Merge Sort Function Template.
+ *    Implementation of Merge sort Algorithm
+ * @param vec:(reference) vector container.
+ * @return sorted vector
+ */
 template<typename T>
 void merge_sort(std::vector<T> &vec){
     if (vec.size() <= 1) return;
@@ -94,6 +121,14 @@ void merge_sort(std::vector<T> &vec){
     
 }
 
+/**
+ * Partion Function
+ *    Creates partions for quick_sort
+ * @param left: (reference) lower bound index.
+ * @param right: (reference) upper bound index.
+ * @param index: (reference) pivot.
+ * @param vec: (reference) vector container
+ */
 template<typename T>
 int partition(std::vector<T> &vec, int left, int right, int index){
     
@@ -118,6 +153,16 @@ int partition(std::vector<T> &vec, int left, int right, int index){
   return storedIndex;
 }
 
+/**
+ * Quick Sort Function Template.
+ *    Implementation of Quick sort Algorithm
+ * @param vec:(reference) vector container.
+ * @param low:(reference) lower bound of vector for sort.
+ * @param high:(reference) upper bound of vector for sort.
+ * @param pivot:(reference) pivot.
+ * @return sorted vector
+ */
+
 template<typename T>
 void quick_sort(std::vector<T> &vec, 
                 int low, int high,
@@ -131,10 +176,7 @@ void quick_sort(std::vector<T> &vec,
         quick_sort(vec, low, pivotVal-1, low);
         quick_sort(vec,  pivotVal+1, high, pivotVal+1);
     }
-  
-
 }
-
 
 }
 #endif 

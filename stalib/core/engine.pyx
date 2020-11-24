@@ -1,4 +1,5 @@
 from stalib.core.algorithms cimport ops as _algorithms
+from stalib.core.templates cimport ops as _templates
 from stalib.errors import STALibValidationError
 from libcpp.vector cimport vector
 from libcpp.string cimport string
@@ -126,3 +127,8 @@ cdef class Typed:
         first_type = type(next(it))
         return first_type if all( (type(i) is first_type) for i in it) else False
 
+
+
+class Vector:
+    cdef:
+        vector[]

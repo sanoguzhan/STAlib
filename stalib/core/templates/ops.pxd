@@ -22,3 +22,4 @@ cdef extern from "<vector>" namespace "std":
             bint operator>(iterator)
             bint operator<=(iterator)
             bint operator>=(iterator)
+
