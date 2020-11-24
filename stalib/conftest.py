@@ -1,4 +1,6 @@
 import pytest
+import time 
+
 test_data = {
     "integer": {"input":[1,0,90,5,4,2],
                 "expected": [0,1,2,4,5,90]
@@ -25,3 +27,5 @@ def Float() -> dict:
 def String() -> dict:
     """Test string list values for sort Algorithms"""
     return test_data.get("string")
+
+
