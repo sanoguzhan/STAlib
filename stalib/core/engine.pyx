@@ -1,4 +1,4 @@
-from stalib.core cimport _algorithms
+from stalib.core.algorithms cimport ops as _algorithms
 from stalib.errors import STALibValidationError
 from libcpp.vector cimport vector
 from libcpp.string cimport string

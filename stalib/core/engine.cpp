@@ -1472,13 +1472,13 @@ static PyObject *__pyx_f_6engine_5Typed__BubbleSortLong(std::vector<long>  __pyx
 static PyObject *__pyx_f_6engine_5Typed__BubbleSortDouble(std::vector<double>  __pyx_v__data); /* proto*/
 static PyObject *__pyx_f_6engine_5Typed_validate(PyObject *__pyx_v_ll); /* proto*/
 
-/* Module declarations from 'stalib.core' */
+/* Module declarations from 'stalib.core.algorithms' */
 
 /* Module declarations from 'cython' */
 
 /* Module declarations from 'libcpp.vector' */
 
-/* Module declarations from 'stalib.core._algorithms' */
+/* Module declarations from 'stalib.core.algorithms.ops' */
 
 /* Module declarations from 'libc.string' */
 
@@ -5690,7 +5690,7 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "engine.pyx":2
- * from stalib.core cimport _algorithms
+ * from stalib.core.algorithms cimport ops as _algorithms
  * from stalib.errors import STALibValidationError             # <<<<<<<<<<<<<<
  * from libcpp.vector cimport vector
  * from libcpp.string cimport string
@@ -5710,7 +5710,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "engine.pyx":1
- * from stalib.core cimport _algorithms             # <<<<<<<<<<<<<<
+ * from stalib.core.algorithms cimport ops as _algorithms             # <<<<<<<<<<<<<<
  * from stalib.errors import STALibValidationError
  * from libcpp.vector cimport vector
  */
