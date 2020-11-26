@@ -14,6 +14,7 @@ def test_binary_search(
 ):
     """
     Test for Bubble search algorithm
+        Test for list with int, string, float types
     """
 
     assert binary_search(sorted_list, 22) == 4
