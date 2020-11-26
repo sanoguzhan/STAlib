@@ -19,10 +19,23 @@ cdef class Typed:
     def __cinit__(self, ll):
         self.__data = ll
 
+    cpdef BinarySearch(self, token):
+        """
+        Binary Search Entry Point to C++ Binary search function
+        Type is casted to a proper type"""
+        typed = Typed.validate(self.__data)
+        if typed is str:
+            return Typed._BinarySearchString([i.encode('utf-8') for i in self.__data], token.encode('utf-8'))
+        elif typed is int:
+            return Typed._BinarySearchLong(self.__data, token)
+        elif typed is float:
+            return Typed._BinarySearchDouble(self.__data, token)
+
+
     cpdef MergeSort(self):
         """ 
         Merge Sort Entry Point to C++ Merge sort function
-        Type is Casted a proper value
+        Type is Casted a proper type
         """
         typed = Typed.validate(self.__data)
         if typed is str:
@@ -36,7 +49,7 @@ cdef class Typed:
     cpdef BubbleSort(self):
         """
         Bubble Sort Entry Point to C++ Bubble sort function
-        Type is Casted a proper value
+        Type is Casted a proper type
         """
         typed = Typed.validate(self.__data)
         if typed is str:
@@ -49,7 +62,7 @@ cdef class Typed:
     cpdef QuickSort(self):
         """
         Quick Sort Entry Point to C++ Quick sort function
-        Type is Casted a proper value
+        Type is Casted a proper type
         """
         typed = Typed.validate(self.__data)
         cdef:
@@ -117,6 +130,32 @@ cdef class Typed:
         with nogil:
             _algorithms.bubble_sort(_data)
         return _data
+
+    @staticmethod
+    cdef _BinarySearchString(vector[string] _data, string token):
+        cdef:
+            int index
+        with nogil:
+            index = _algorithms.binary_search(_data, token)
+        return index
+
+    @staticmethod
+    cdef _BinarySearchLong(vector[long] _data, long token):
+        cdef:
+            int index
+        with nogil:
+            index =_algorithms.binary_search(_data, token)
+        return index
+
+    @staticmethod
+    cdef _BinarySearchDouble(vector[double] _data, double token):
+        cdef:
+            int index
+        with nogil:
+           index = _algorithms.binary_search(_data, token)
+        return index
+
+
     @staticmethod
     cdef validate(list ll):
         """

@@ -12,15 +12,15 @@
  * @return index of searched if exist in vector else -1.
  */
 template <typename T>
-T binary_search(std::vector<T> &vec, T token){
+int binary_search(std::vector<T> &vec, T token){
     size_t lower = 0;
     size_t upper = vec.size() - 1;
 
     while(lower <= upper){
         int mid = ((upper - lower) / 2) + lower;
-        if(key > vec.at(mid)){
+        if(token > vec.at(mid)){
             lower = mid +1;
-        }else if(key < vec.at(mid)){
+        }else if(token < vec.at(mid)){
             upper = mid -1; 
         }else{
             return mid;

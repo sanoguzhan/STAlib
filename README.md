@@ -15,6 +15,8 @@ Algorithms:
 | [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)
 | [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nlogn) |
 | [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
+| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
+
 
 
 ------
