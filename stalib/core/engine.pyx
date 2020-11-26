@@ -127,8 +127,3 @@ cdef class Typed:
         first_type = type(next(it))
         return first_type if all( (type(i) is first_type) for i in it) else False
 
-
-
-class Vector:
-    cdef:
-        vector[]
