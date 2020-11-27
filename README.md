@@ -21,6 +21,7 @@ Algorithms:
 
 
 *Sorted Array
+
 ------
 ## Getting started
 
