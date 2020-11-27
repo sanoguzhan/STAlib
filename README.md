@@ -17,10 +17,10 @@ Algorithms:
 | [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)
 | [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nlogn) |
 | [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
-| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
+| [Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)| Search    |     *O(Logn) |
 
 
-
+*Sorted Array
 ------
 ## Getting started
 
