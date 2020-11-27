@@ -2,7 +2,7 @@
 # STALib
 
 
-![build](https://github.com/sanoguzhan/STAlib/workflows/Python%20package/badge.svg)
+![build](https://github.com/sanoguzhan/STAlib/workflows/build/badge.svg)
 
 
 Standard Template and algorithms library of C++ for Python with C-Python API
