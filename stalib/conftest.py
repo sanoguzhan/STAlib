@@ -1,5 +1,6 @@
 import pytest
 import time 
+import random
 
 test_data = {
     "integer": {"input":[1,0,90,5,4,2],
@@ -30,4 +31,5 @@ def String() -> dict:
 
 @pytest.fixture
 def random_list()->list:
-    return list(range(100))
+    """Random list for sorting and searching algorithms"""
+    return [i * random.randint(0,100) for i in range(100*100)]
