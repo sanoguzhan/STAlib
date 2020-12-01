@@ -14,12 +14,12 @@ The algorithms implemented in C++ and extended to Python and compitable with Pyt
 Algorithms:
 
 
-| Name          | Type          | Worst-case Performance                   | 
-| ------------- |:-------------:| --------------------------------:|
-| [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)
-| [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nlogn) |
-| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
-| [Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)| Search    |     *O(Logn) |
+| Name          | Type          | Worst-case Performance                   | Module
+| ------------- |:-------------:| --------------------------------:|-------------:|
+| [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)|algorithms
+| [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nlogn) |algorithms
+| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |algorithms
+| [Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)| Search    |     *O(Logn) |algorithms
 
 
 *Sorted Array
