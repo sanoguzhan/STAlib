@@ -3,7 +3,6 @@
 
 
 ![build](https://github.com/sanoguzhan/STAlib/workflows/build/badge.svg)
-
 ![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)
 
 Standard Template and algorithms library of C++ for Python with C-Python API
