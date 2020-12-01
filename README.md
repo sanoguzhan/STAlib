@@ -4,6 +4,7 @@
 
 ![build](https://github.com/sanoguzhan/STAlib/workflows/build/badge.svg)
 
+![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)
 
 Standard Template and algorithms library of C++ for Python with C-Python API
 
@@ -16,12 +17,12 @@ Algorithms:
 
 
 
-| Name          | Type          | Worst-case Performance                   | 
-| ------------- |:-------------:| --------------------------------:|
-| [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)
-| [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nLogn) |
-| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |
-| [Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)| Search    |     *O(Logn) |
+| Name          | Type          | Worst-case Performance                   | Module
+| ------------- |:-------------:| --------------------------------:|-------------:|
+| [Buble Sort](https://en.wikipedia.org/wiki/Bubble_sort)    |  Sort       | O(n^2)|algorithms
+| [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)     | Sort      |   O(nlogn) |algorithms
+| [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)| Sort    |    O(n^2) |algorithms
+| [Binary Search](https://en.wikipedia.org/wiki/Binary_search_algorithm)| Search    |     *O(Logn) |algorithms
 
 
 
