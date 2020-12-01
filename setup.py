@@ -31,7 +31,7 @@ dir_search = os.path.join(ext_lib_path, "search")
 
 
 
-# Use as macros = [('<DEFINITION>', '<VALUE>')]
+
 
 macros = None
 
@@ -56,7 +56,6 @@ def get_long_description():
     with open('docs/versions.rst') as infile:
         next(infile)
         for line in infile:
-            line = line.rstrip().replace('.. automodule:: stalib', '')
             version_lines.append(line)
     version_history = '\n'.join(version_lines)
     version_history = sub(r':func:`([a-zA-Z0-9._]+)`', r'\1', version_history)
