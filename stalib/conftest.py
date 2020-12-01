@@ -28,4 +28,6 @@ def String() -> dict:
     """Test string list values for sort Algorithms"""
     return test_data.get("string")
 
-
+@pytest.fixture
+def random_list()->list:
+    return list(range(100))
