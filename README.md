@@ -5,7 +5,7 @@
 ![build](https://github.com/sanoguzhan/STAlib/workflows/build/badge.svg)
 ![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)
 [![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
-
+[![Downloads](https://static.pepy.tech/personalized-badge/stalib?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/stalib)
 
 Standard Template and algorithms library of C++ for Python with C-Python API
 
